@@ -1005,12 +1005,16 @@ document.write(`
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script>
 function downloadAsPDF() {
-    // Pune clasa specială pe body pentru layout de print
     document.body.classList.add('pdf-export-mode');
-    // Dă un mic delay ca să se aplice stilurile
+    // Forțează containerul să fie maxim
+    const container = document.querySelector('.container');
+    container.style.width = '100vw';
+    container.style.maxWidth = '100vw';
+    container.style.minWidth = '100vw';
+    container.style.margin = '0';
     setTimeout(() => {
         const { jsPDF } = window.jspdf;
-        html2canvas(document.querySelector('.container'), {backgroundColor: "#fff"}).then(canvas => {
+        html2canvas(container, {backgroundColor: "#fff"}).then(canvas => {
             const imgData = canvas.toDataURL('image/png');
             const pdf = new jsPDF('p', 'pt', 'a4');
             const pageWidth = pdf.internal.pageSize.getWidth();
@@ -1023,8 +1027,12 @@ function downloadAsPDF() {
             }
             pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
             pdf.save("fisa-premium.pdf");
-            // Scoate clasa după export
+            // Scoate clasa și resetează stilul
             document.body.classList.remove('pdf-export-mode');
+            container.style.width = '';
+            container.style.maxWidth = '';
+            container.style.minWidth = '';
+            container.style.margin = '';
         });
     }, 200);
 }
