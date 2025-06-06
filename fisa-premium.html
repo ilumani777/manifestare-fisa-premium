@@ -391,200 +391,200 @@
                 white-space: nowrap;
                 font-weight: bold;
                 font-size: 0.95em;
-                color: #ffd700;
-            }
-            .days21-table td:nth-child(1):before { content: "Ziua"; }
-            .days21-table td:nth-child(2):before { content: "Afirmație dimineața"; }
-            .days21-table td:nth-child(3):before { content: "Vizualizare 7 min"; }
-            .days21-table td:nth-child(4):before { content: "Jurnal recunoștință seara"; }
-        }
-        @media (max-width: 480px) {
-            body {
-                padding: 2px;
-                font-size: 0.92em;
-            }
-            .container {
-                border-radius: 9px;
-                padding: 0;
-            }
-            .premium-badge {
-                font-size: 0.92rem;
-                padding: 5px 0;
-                gap: 4px;
-            }
-            header {
-                padding: 15px 5px 12px 5px;
-            }
-            h1 {
-                font-size: 1.03rem;
-                margin-bottom: 8px;
-            }
-            .subtitle {
-                font-size: 0.96rem;
-            }
-            .main-content, .benefits-grid, .section, .exercise-box {
-                padding: 2px !important;
-            }
-            .benefit-card {
-                padding: 9px;
-            }
-            .benefit-title {
-                font-size: 1.08rem;
-            }
-            .section {
-                margin-bottom: 13px;
-                padding: 6px 2px;
-            }
-            h2 {
-                font-size: 0.97rem;
-                gap: 6px;
-                margin-bottom: 8px;
-            }
-            h2 i {
-                font-size: 1.11rem;
-                margin-right: 4px;
-            }
-            .days21-table th, .days21-table td {
-                padding: 1px 0;
-                font-size: 0.81em;
-            }
-            .footer {
-                padding: 7px;
-                font-size: 0.85em;
-            }
-            .zodiac-grid {
-                grid-template-columns: repeat(2, 1fr) !important;
-                gap: 6px;
-            }
-            .zodiac-option {
-                padding: 7px 2px 5px 2px;
-                border-radius: 8px;
-            }
-            .zodiac-icon {
-                font-size: 1.2rem;
-                margin-bottom: 3px;
-            }
-        }
-/* ----------- MOBILE OPTIMIZARE: sub 600px ---------- */
+           .days21-table td:nth-child(1):before { content: "Ziua"; }
+.days21-table td:nth-child(2):before { content: "Afirmație dimineața"; }
+.days21-table td:nth-child(3):before { content: "Vizualizare 7 min"; }
+.days21-table td:nth-child(4):before { content: "Jurnal recunoștință seara"; }
+
+@media (max-width: 480px) {
+    body {
+        padding: 2px;
+        font-size: 0.92em;
+    }
+    .container {
+        border-radius: 9px;
+        padding: 0;
+    }
+    .premium-badge {
+        font-size: 0.92rem;
+        padding: 5px 0;
+        gap: 4px;
+    }
+    header {
+        padding: 15px 5px 12px 5px;
+    }
+    h1 {
+        font-size: 1.03rem;
+        margin-bottom: 8px;
+    }
+    .subtitle {
+        font-size: 0.96rem;
+    }
+    .main-content, .benefits-grid, .section, .exercise-box {
+        padding: 2px !important;
+    }
+    .benefit-card {
+        padding: 9px;
+    }
+    .benefit-title {
+        font-size: 1.08rem;
+    }
+    .section {
+        margin-bottom: 13px;
+        padding: 6px 2px;
+    }
+    h2 {
+        font-size: 0.97rem;
+        gap: 6px;
+        margin-bottom: 8px;
+    }
+    h2 i {
+        font-size: 1.11rem;
+        margin-right: 4px;
+    }
+    .days21-table th, .days21-table td {
+        padding: 1px 0;
+        font-size: 0.81em;
+    }
+    .footer {
+        padding: 7px;
+        font-size: 0.85em;
+    }
+    .zodiac-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 6px;
+    }
+    .zodiac-option {
+        padding: 7px 2px 5px 2px;
+        border-radius: 8px;
+    }
+    .zodiac-icon {
+        font-size: 1.2rem;
+        margin-bottom: 3px;
+    }
+}
+
 @media (max-width: 600px) {
-  /* Antet (ex: FISA PREMIUM DE MANIFESTARE) */
-  .premium-header, .fisa-premium-header, h2, h3 {
-    color: #FFD700 !important;
-    background: #271b4a !important;
-    font-weight: 900 !important;
-    font-size: 1.25rem !important;
-    padding: 1rem 0.2rem !important;
-    text-shadow: 0 1px 8px #000, 0 0 2px #fff4 !important;
-    border-radius: 0.6rem !important;
-    text-align: center !important;
-    letter-spacing: 1px !important;
-    margin-bottom: 1.2rem !important;
-  }
-
-  /* Program 21 zile: mai mult spațiu, fonturi mai mari */
-  .program-21zile, .program-21zile * {
-    font-size: 1.07rem !important;
-    line-height: 1.55 !important;
-  }
-  .program-21zile .ziua {
-    margin-bottom: 1.2rem !important;
-    padding: 1rem 0.7rem !important;
-    border-radius: 0.7rem !important;
-    border: 1px solid #5c4e77 !important;
-    background: #1b1530f2 !important;
-    box-shadow: 0 2px 6px #0002 !important;
-  }
-  .program-21zile label {
-    display: flex !important;
-    align-items: center !important;
-    margin-bottom: 0.5rem !important;
-    font-weight: 700 !important;
-    color: #ffdf63 !important;
-    font-size: 1em !important;
-    letter-spacing: 0.1em !important;
-  }
-  .program-21zile input[type="checkbox"] {
-    margin-right: 0.8em !important;
-    width: 1.3em !important;
-    height: 1.3em !important;
-    accent-color: #ffdf63 !important;
-  }
-  .program-21zile strong {
-    display: block !important;
-    margin-bottom: 0.3em !important;
-    font-size: 1.06em !important;
-    color: #efd53d !important;
-    letter-spacing: 0.12em !important;
-  }
-
-  /* Layout general: Padding pe mobil */
-  body {
-    padding: 0.2em !important;
-  }
+    /* Antet (ex: FISA PREMIUM DE MANIFESTARE) */
+    .premium-header, .fisa-premium-header, h2, h3 {
+        color: #FFD700 !important;
+        background: #271b4a !important;
+        font-weight: 900 !important;
+        font-size: 1.25rem !important;
+        padding: 1rem 0.2rem !important;
+        text-shadow: 0 1px 8px #000, 0 0 2px #fff4 !important;
+        border-radius: 0.6rem !important;
+        text-align: center !important;
+        letter-spacing: 1px !important;
+        margin-bottom: 1.2rem !important;
+    }
+    /* Program 21 zile: mai mult spațiu, fonturi mai mari + corecții de aliniere și fonturi */
+    .program-21zile, .program-21zile * {
+        font-size: 1.07rem !important;
+        line-height: 1.55 !important;
+    }
+    .program-21zile .ziua {
+        margin-bottom: 1.2rem !important;
+        padding: 1rem 0.7rem !important;
+        border-radius: 0.7rem !important;
+        border: 1px solid #5c4e77 !important;
+        background: #1b1530f2 !important;
+        box-shadow: 0 2px 6px #0002 !important;
+    }
+    .program-21zile label {
+        display: flex !important;
+        align-items: center !important;
+        gap: 0.5em !important;
+        margin-bottom: 0.5rem !important;
+        font-weight: 700 !important;
+        color: #ffdf63 !important;
+        font-size: 1em !important;
+        letter-spacing: 0.1em !important;
+        padding: 0.2em 0 !important;
+        line-height: 1.3 !important;
+        word-break: break-word !important;
+    }
+    .program-21zile input[type="checkbox"] {
+        margin-right: 0.6em !important;
+        width: 1.2em !important;
+        height: 1.2em !important;
+        accent-color: #ffdf63 !important;
+        flex-shrink: 0 !important;
+    }
+    .program-21zile strong {
+        display: block !important;
+        margin-bottom: 0.3em !important;
+        font-size: 1.03em !important;
+        color: #efd53d !important;
+        letter-spacing: 0.12em !important;
+    }
+    /* Layout general: Padding pe mobil */
+    body {
+        padding: 0.2em !important;
+    }
 }
 
 /* ----------- PDF OPTIMIZARE: print ---------- */
 @media print {
-  html, body {
-    background: #fff !important;
-    color: #000 !important;
-    font-size: 18px !important;
-    line-height: 1.5 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-  .premium-header, .fisa-premium-header, h2, h3 {
-    color: #FFD700 !important;
-    background: #271b4a !important;
-    font-size: 2.1rem !important;
-    font-weight: 900 !important;
-    text-align: center !important;
-    text-shadow: none !important;
-    margin-bottom: 1.2rem !important;
-    padding: 1.3rem 0 !important;
-  }
-  .program-21zile, .program-21zile * {
-    font-size: 1.15rem !important;
-    line-height: 1.7 !important;
-  }
-  .program-21zile .ziua {
-    margin-bottom: 1.4rem !important;
-    padding: 1.1rem 1.3rem !important;
-    border-radius: 0.9rem !important;
-    border: 1.5px solid #5c4e77 !important;
-    background: #f9f3e8 !important;
-    box-shadow: none !important;
-  }
-  .program-21zile label {
-    display: flex !important;
-    align-items: center !important;
-    margin-bottom: 0.55rem !important;
-    font-weight: 700 !important;
-    color: #3f2e02 !important;
-    font-size: 1.1em !important;
-    letter-spacing: 0.08em !important;
-  }
-  .program-21zile input[type="checkbox"] {
-    margin-right: 0.8em !important;
-    width: 1.15em !important;
-    height: 1.15em !important;
-    accent-color: #FFD700 !important;
-  }
-  .program-21zile strong {
-    display: block !important;
-    margin-bottom: 0.3em !important;
-    font-size: 1.13em !important;
-    color: #b59413 !important;
-    letter-spacing: 0.13em !important;
-  }
-  /* Elimină spațiile goale sus/jos */
-  .container, .main-content, .wrapper {
-    margin: 0 !important;
-    padding: 0 !important;
-    width: 100% !important;
-  }
+    html, body {
+        background: #fff !important;
+        color: #000 !important;
+        font-size: 18px !important;
+        line-height: 1.5 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    .premium-header, .fisa-premium-header, h2, h3 {
+        color: #FFD700 !important;
+        background: #271b4a !important;
+        font-size: 2.1rem !important;
+        font-weight: 900 !important;
+        text-align: center !important;
+        text-shadow: none !important;
+        margin-bottom: 1.2rem !important;
+        padding: 1.3rem 0 !important;
+    }
+    .program-21zile, .program-21zile * {
+        font-size: 1.15rem !important;
+        line-height: 1.7 !important;
+    }
+    .program-21zile .ziua {
+        margin-bottom: 1.4rem !important;
+        padding: 1.1rem 1.3rem !important;
+        border-radius: 0.9rem !important;
+        border: 1.5px solid #5c4e77 !important;
+        background: #f9f3e8 !important;
+        box-shadow: none !important;
+    }
+    .program-21zile label {
+        display: flex !important;
+        align-items: center !important;
+        margin-bottom: 0.55rem !important;
+        font-weight: 700 !important;
+        color: #3f2e02 !important;
+        font-size: 1.1em !important;
+        letter-spacing: 0.08em !important;
+    }
+    .program-21zile input[type="checkbox"] {
+        margin-right: 0.8em !important;
+        width: 1.15em !important;
+        height: 1.15em !important;
+        accent-color: #FFD700 !important;
+    }
+    .program-21zile strong {
+        display: block !important;
+        margin-bottom: 0.3em !important;
+        font-size: 1.13em !important;
+        color: #b59413 !important;
+        letter-spacing: 0.13em !important;
+    }
+    /* Elimină spațiile goale sus/jos */
+    .container, .main-content, .wrapper {
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+    }
 }
-
 /* --------- Recomandare HTML pentru programul 21 zile ---------
 <div class="program-21zile">
   <div class="ziua">
