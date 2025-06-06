@@ -596,6 +596,22 @@
   <!-- Repetă pentru fiecare zi -->
 </div>
 */
+.pdf-export-mode .container {
+  width: 794px !important;        /* lățimea A4 la 96dpi */
+  max-width: 794px !important;
+  min-width: 794px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  background: #fff !important;
+  color: #222 !important;
+}
+.pdf-export-mode {
+  background: #fff !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
@@ -1006,35 +1022,47 @@ document.write(`
 <script>
 function downloadAsPDF() {
     document.body.classList.add('pdf-export-mode');
-    // Forțează containerul să fie maxim
     const container = document.querySelector('.container');
-    container.style.width = '100vw';
-    container.style.maxWidth = '100vw';
-    container.style.minWidth = '100vw';
-    container.style.margin = '0';
+    // Forțează containerul la lățimea A4 pentru PDF (96dpi ≈ 794px)
+    container.style.width = '794px';
+    container.style.maxWidth = '794px';
+    container.style.minWidth = '794px';
+    container.style.margin = '0 auto';
+
     setTimeout(() => {
         const { jsPDF } = window.jspdf;
-        html2canvas(container, {backgroundColor: "#fff"}).then(canvas => {
+        html2canvas(container, {
+            backgroundColor: "#fff",
+            scale: 2 // claritate mai bună
+        }).then(canvas => {
             const imgData = canvas.toDataURL('image/png');
             const pdf = new jsPDF('p', 'pt', 'a4');
             const pageWidth = pdf.internal.pageSize.getWidth();
             const pageHeight = pdf.internal.pageSize.getHeight();
             let imgWidth = pageWidth;
-            let imgHeight = canvas.height * (imgWidth / canvas.width);
-            if (imgHeight > pageHeight) {
-                imgHeight = pageHeight;
-                imgWidth = canvas.width * (imgHeight / canvas.height);
+            let imgHeight = canvas.height * imgWidth / canvas.width;
+
+            // Dacă e pe mai multe pagini, segmentează imaginea
+            let position = 0;
+            let remainingHeight = imgHeight;
+            while (remainingHeight > 0) {
+                pdf.addImage(imgData, 'PNG', 0, position === 0 ? 0 : 0, imgWidth, imgHeight);
+                remainingHeight -= pageHeight;
+                position += pageHeight;
+                if (remainingHeight > 0) {
+                    pdf.addPage();
+                }
             }
-            pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+
             pdf.save("fisa-premium.pdf");
-            // Scoate clasa și resetează stilul
+            // Resetare stiluri după export
             document.body.classList.remove('pdf-export-mode');
             container.style.width = '';
             container.style.maxWidth = '';
             container.style.minWidth = '';
             container.style.margin = '';
         });
-    }, 200);
+    }, 300);
 }
 </script>
 </body>
