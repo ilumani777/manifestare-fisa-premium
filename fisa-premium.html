@@ -344,6 +344,80 @@
         @media (max-width: 510px) {
             .days21-table th, .days21-table td { padding: 4px 1px; font-size: 0.95em;}
         }
+        /* Tabel scrollabil pe mobil */
+        @media (max-width: 600px) {
+            .days21-table, .days21-table thead, .days21-table tbody, .days21-table th, .days21-table td, .days21-table tr {
+                display: block;
+            }
+            .days21-table thead {
+                display: none;
+            }
+            .days21-table tr {
+                margin-bottom: 10px;
+            }
+            .days21-table td {
+                text-align: left;
+                padding-left: 40%;
+                position: relative;
+            }
+            .days21-table td:before {
+                position: absolute;
+                left: 6px;
+                top: 0;
+                width: 38%;
+                white-space: nowrap;
+                font-weight: bold;
+                font-size: 0.98em;
+                color: #ffd700;
+            }
+            .days21-table td:nth-child(1):before { content: "Ziua"; }
+            .days21-table td:nth-child(2):before { content: "Afirmație dimineața"; }
+            .days21-table td:nth-child(3):before { content: "Vizualizare 7 min"; }
+            .days21-table td:nth-child(4):before { content: "Jurnal recunoștință seara"; }
+        }
+        @media (max-width: 480px) {
+            body {
+                padding: 4px;
+                font-size: 0.98em;
+            }
+            .container {
+                border-radius: 12px;
+                padding: 0;
+            }
+            header {
+                padding: 28px 8px 18px 8px;
+            }
+            h1 {
+                font-size: 1.3rem;
+            }
+            .main-content, .benefits-grid, .section, .exercise-box {
+                padding: 4px !important;
+            }
+            .premium-badge {
+                top: 8px;
+                right: 8px;
+                font-size: 0.98rem;
+                padding: 6px 10px;
+            }
+            .benefit-card {
+                padding: 15px;
+            }
+            .section {
+                margin-bottom: 22px;
+                padding: 12px 4px;
+            }
+            .days21-table th, .days21-table td {
+                padding: 2px 1px;
+                font-size: 0.91em;
+            }
+            .footer {
+                padding: 10px;
+            }
+            .zodiac-grid, .moon-phase-selector {
+                grid-template-columns: 1fr !important;
+                gap: 8px;
+            }
+        }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
