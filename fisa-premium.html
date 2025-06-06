@@ -465,6 +465,137 @@
                 margin-bottom: 3px;
             }
         }
+/* ----------- MOBILE OPTIMIZARE: sub 600px ---------- */
+@media (max-width: 600px) {
+  /* Antet (ex: FISA PREMIUM DE MANIFESTARE) */
+  .premium-header, .fisa-premium-header, h2, h3 {
+    color: #FFD700 !important;
+    background: #271b4a !important;
+    font-weight: 900 !important;
+    font-size: 1.25rem !important;
+    padding: 1rem 0.2rem !important;
+    text-shadow: 0 1px 8px #000, 0 0 2px #fff4 !important;
+    border-radius: 0.6rem !important;
+    text-align: center !important;
+    letter-spacing: 1px !important;
+    margin-bottom: 1.2rem !important;
+  }
+
+  /* Program 21 zile: mai mult spațiu, fonturi mai mari */
+  .program-21zile, .program-21zile * {
+    font-size: 1.07rem !important;
+    line-height: 1.55 !important;
+  }
+  .program-21zile .ziua {
+    margin-bottom: 1.2rem !important;
+    padding: 1rem 0.7rem !important;
+    border-radius: 0.7rem !important;
+    border: 1px solid #5c4e77 !important;
+    background: #1b1530f2 !important;
+    box-shadow: 0 2px 6px #0002 !important;
+  }
+  .program-21zile label {
+    display: flex !important;
+    align-items: center !important;
+    margin-bottom: 0.5rem !important;
+    font-weight: 700 !important;
+    color: #ffdf63 !important;
+    font-size: 1em !important;
+    letter-spacing: 0.1em !important;
+  }
+  .program-21zile input[type="checkbox"] {
+    margin-right: 0.8em !important;
+    width: 1.3em !important;
+    height: 1.3em !important;
+    accent-color: #ffdf63 !important;
+  }
+  .program-21zile strong {
+    display: block !important;
+    margin-bottom: 0.3em !important;
+    font-size: 1.06em !important;
+    color: #efd53d !important;
+    letter-spacing: 0.12em !important;
+  }
+
+  /* Layout general: Padding pe mobil */
+  body {
+    padding: 0.2em !important;
+  }
+}
+
+/* ----------- PDF OPTIMIZARE: print ---------- */
+@media print {
+  html, body {
+    background: #fff !important;
+    color: #000 !important;
+    font-size: 18px !important;
+    line-height: 1.5 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .premium-header, .fisa-premium-header, h2, h3 {
+    color: #FFD700 !important;
+    background: #271b4a !important;
+    font-size: 2.1rem !important;
+    font-weight: 900 !important;
+    text-align: center !important;
+    text-shadow: none !important;
+    margin-bottom: 1.2rem !important;
+    padding: 1.3rem 0 !important;
+  }
+  .program-21zile, .program-21zile * {
+    font-size: 1.15rem !important;
+    line-height: 1.7 !important;
+  }
+  .program-21zile .ziua {
+    margin-bottom: 1.4rem !important;
+    padding: 1.1rem 1.3rem !important;
+    border-radius: 0.9rem !important;
+    border: 1.5px solid #5c4e77 !important;
+    background: #f9f3e8 !important;
+    box-shadow: none !important;
+  }
+  .program-21zile label {
+    display: flex !important;
+    align-items: center !important;
+    margin-bottom: 0.55rem !important;
+    font-weight: 700 !important;
+    color: #3f2e02 !important;
+    font-size: 1.1em !important;
+    letter-spacing: 0.08em !important;
+  }
+  .program-21zile input[type="checkbox"] {
+    margin-right: 0.8em !important;
+    width: 1.15em !important;
+    height: 1.15em !important;
+    accent-color: #FFD700 !important;
+  }
+  .program-21zile strong {
+    display: block !important;
+    margin-bottom: 0.3em !important;
+    font-size: 1.13em !important;
+    color: #b59413 !important;
+    letter-spacing: 0.13em !important;
+  }
+  /* Elimină spațiile goale sus/jos */
+  .container, .main-content, .wrapper {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+  }
+}
+
+/* --------- Recomandare HTML pentru programul 21 zile ---------
+<div class="program-21zile">
+  <div class="ziua">
+    <strong>1 Ziua</strong>
+    <label><input type="checkbox">Afirmație dimineața</label>
+    <label><input type="checkbox">Vizualizare 7 min</label>
+    <label><input type="checkbox">Jurnal recunoștință seara</label>
+  </div>
+  <!-- Repetă pentru fiecare zi -->
+</div>
+*/
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
