@@ -1023,7 +1023,6 @@ document.write(`
 function downloadAsPDF() {
     document.body.classList.add('pdf-export-mode');
     const container = document.querySelector('.container');
-    // Forțează containerul la lățimea A4 pentru PDF (96dpi ≈ 794px)
     container.style.width = '794px';
     container.style.maxWidth = '794px';
     container.style.minWidth = '794px';
@@ -1033,28 +1032,33 @@ function downloadAsPDF() {
         const { jsPDF } = window.jspdf;
         html2canvas(container, {
             backgroundColor: "#fff",
-            scale: 2 // claritate mai bună
+            scale: 2
         }).then(canvas => {
             const imgData = canvas.toDataURL('image/png');
             const pdf = new jsPDF('p', 'pt', 'a4');
             const pageWidth = pdf.internal.pageSize.getWidth();
             const pageHeight = pdf.internal.pageSize.getHeight();
-            let imgWidth = pageWidth;
-            let imgHeight = canvas.height * imgWidth / canvas.width;
 
-            // Dacă e pe mai multe pagini, segmentează imaginea
+            const imgWidth = pageWidth;
+            const imgHeight = canvas.height * imgWidth / canvas.width;
+
+            let heightLeft = imgHeight;
             let position = 0;
-            let remainingHeight = imgHeight;
-            while (remainingHeight > 0) {
-                pdf.addImage(imgData, 'PNG', 0, position === 0 ? 0 : 0, imgWidth, imgHeight);
-                remainingHeight -= pageHeight;
-                position += pageHeight;
-                if (remainingHeight > 0) {
-                    pdf.addPage();
-                }
+
+            // Prima imagine
+            pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+            heightLeft -= pageHeight;
+
+            // Pagini suplimentare
+            while (heightLeft > 0) {
+                position = heightLeft - imgHeight;
+                pdf.addPage();
+                pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+                heightLeft -= pageHeight;
             }
 
             pdf.save("fisa-premium.pdf");
+
             // Resetare stiluri după export
             document.body.classList.remove('pdf-export-mode');
             container.style.width = '';
