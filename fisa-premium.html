@@ -959,57 +959,76 @@ document.write(`
             document.getElementById('matrixResult').style.display = 'block';
         }
         // Generare program reprogramare cu tabel 21 zile si text explicativ
-        function generateReprogramming() {
-            const limiting = document.getElementById('limiting-belief').value;
-            const newBelief = document.getElementById('new-belief').value;
-            if (!limiting || !newBelief) {
-                alert('Completează ambele câmpuri!');
-                return;
-            }
-            document.getElementById('dailyAffirmation').textContent = newBelief;
-            // Text explicativ
-            const expText = `
-                <b>Cum folosești programul de 21 de zile?</b><br>
-                În fiecare zi, timp de 21 de zile consecutive:<br>
-                <ul style="margin:8px 0 0 18px;">
-                    <li><b>Dimineața:</b> Roștește afirmația ta de 3 ori cu voce tare sau în gând, conectându-te cu emoția dorită.</li>
-                    <li><b>Imediat după:</b> Fă 7 minute de vizualizare (imaginează cum trăiești deja noua realitate).</li>
-                    <li><b>Seara:</b> Scrie 1-2 rânduri de recunoștință în jurnal pentru orice mic progres sau semn că universul te susține.</li>
-                    <li>Bifează în tabelul de mai jos activitățile realizate în fiecare zi, pentru a menține consecvența și motivația.</li>
-                </ul>
-                <div style="margin-top:7px;color:#ffd700;"><i class="fas fa-bolt"></i> Puterea transformării stă în <b>repetiție și consecvență</b>!</div>
-            `;
-            const expDiv = document.getElementById('programExplanation');
-            expDiv.innerHTML = expText;
-            expDiv.style.display = "block";
-            // Construiește tabel explicit pentru 21 de zile
-            let table = `<div class="affirmation-box"><b>Afirmație zilnică:</b> "${newBelief}"</div>
-            <table class="days21-table">
-                <caption>Program de 21 de zile – Urmărește progresul tău!</caption>
-                <thead>
-                    <tr>
-                        <th>Ziua</th>
-                        <th>Afirmație dimineața</th>
-                        <th>Vizualizare 7 min</th>
-                        <th>Jurnal recunoștință seara</th>
-                    </tr>
-                </thead>
-                <tbody>
-            `;
-            for(let i=1;i<=21;i++) {
-                table += `<tr>
-                    <td>${i}</td>
-                    <td><input type="checkbox" title="Bifat dacă ai rostit afirmația dimineața"></td>
-                    <td><input type="checkbox" title="Bifat dacă ai făcut vizualizarea"></td>
-                    <td><input type="checkbox" title="Bifat dacă ai scris în jurnal"></td>
-                </tr>`;
-            }
-            table += `</tbody></table>
-            <div style="margin:11px 0 0 0; text-align:center; font-size:0.95em; color:#ffd700;">
-                <i class="fas fa-star"></i> Completează fiecare zi pentru rezultate maxime!
-            </div>`;
-            document.getElementById('program21container').innerHTML = table;
-        }
+function generateReprogramming() {
+    const limiting = document.getElementById('limiting-belief').value;
+    const newBelief = document.getElementById('new-belief').value;
+    if (!limiting || !newBelief) {
+        alert('Completează ambele câmpuri!');
+        return;
+    }
+    document.getElementById('dailyAffirmation').textContent = newBelief;
+
+    // Text explicativ
+    const expText = `
+        <b>Cum folosești programul de 21 de zile?</b><br>
+        În fiecare zi, timp de 21 de zile consecutive:<br>
+        <ul style="margin:8px 0 0 18px;">
+            <li><b>Dimineața:</b> Roștește afirmația ta de 3 ori cu voce tare sau în gând, conectându-te cu emoția dorită.</li>
+            <li><b>Imediat după:</b> Fă 7 minute de vizualizare (imaginează cum trăiești deja noua realitate).</li>
+            <li><b>Seara:</b> Scrie 1-2 rânduri de recunoștință în jurnal pentru orice mic progres sau semn că universul te susține.</li>
+            <li>Bifează în tabelul de mai jos activitățile realizate în fiecare zi, pentru a menține consecvența și motivația.</li>
+        </ul>
+        <div style="margin-top:7px;color:#ffd700;"><i class="fas fa-bolt"></i> Puterea transformării stă în <b>repetiție și consecvență</b>!</div>
+    `;
+    const expDiv = document.getElementById('programExplanation');
+    expDiv.innerHTML = expText;
+    expDiv.style.display = "block";
+
+    // Construiește ambele structuri: tabel pentru desktop, listă pentru mobil
+    let table = `<table class="days21-table desktop-only">
+        <caption>Program de 21 de zile – Urmărește progresul tău!</caption>
+        <thead>
+            <tr>
+                <th>Ziua</th>
+                <th>Afirmație dimineața</th>
+                <th>Vizualizare 7 min</th>
+                <th>Jurnal recunoștință seara</th>
+            </tr>
+        </thead>
+        <tbody>
+    `;
+
+    let lista = `<div class="program-21zile mobile-only">`;
+
+    for(let i=1;i<=21;i++) {
+        table += `<tr>
+            <td>${i}</td>
+            <td><input type="checkbox" title="Bifat dacă ai rostit afirmația dimineața"></td>
+            <td><input type="checkbox" title="Bifat dacă ai făcut vizualizarea"></td>
+            <td><input type="checkbox" title="Bifat dacă ai scris în jurnal"></td>
+        </tr>`;
+
+        lista += `
+        <div class="ziua">
+          <strong>${i}</strong>
+          <label><input type="checkbox"> Afirmație dimineața</label>
+          <label><input type="checkbox"> Vizualizare 7 min</label>
+          <label><input type="checkbox"> Jurnal recunoștință seara</label>
+        </div>`;
+    }
+
+    table += `</tbody></table>`;
+    lista += `</div>`;
+
+    document.getElementById('program21container').innerHTML = `
+      <div class="affirmation-box"><b>Afirmație zilnică:</b> "${newBelief}"</div>
+      ${table}
+      ${lista}
+      <div style="margin:11px 0 0 0; text-align:center; font-size:0.95em; color:#ffd700;">
+        <i class="fas fa-star"></i> Completează fiecare zi pentru rezultate maxime!
+      </div>
+    `;
+}
     </script>
 </div>
     <div style="text-align:center; margin: 20px 0;">
