@@ -612,6 +612,48 @@
   margin: 0 !important;
   padding: 0 !important;
 }
+.desktop-only { display: table; }
+.mobile-only { display: none; }
+@media (max-width: 700px) {
+  .desktop-only { display: none !important; }
+  .mobile-only { display: block !important; }
+}
+.program-21zile {
+  margin-top: 1.2em;
+}
+.program-21zile .ziua {
+  background: #1b1530f2;
+  border: 1px solid #5c4e77;
+  border-radius: 0.7em;
+  margin-bottom: 1.1em;
+  padding: 1em 0.7em;
+  box-shadow: 0 2px 6px #0002;
+}
+.program-21zile .ziua-nr strong {
+  color: #efd53d;
+  font-size: 1.13em;
+  display: block;
+  margin-bottom: 0.7em;
+  letter-spacing: 0.13em;
+}
+.program-21zile .task {
+  margin-bottom: 0.4em;
+}
+.program-21zile label {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  font-weight: 700;
+  color: #ffdf63;
+  font-size: 1em;
+  letter-spacing: 0.1em;
+}
+.program-21zile input[type="checkbox"] {
+  width: 1.2em;
+  height: 1.2em;
+  accent-color: #ffdf63;
+  margin-right: 0.4em;
+}
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
@@ -958,7 +1000,7 @@ document.write(`
             document.getElementById('matrixText').textContent = matrices[energyType] || `Matrice personalizată 369 pentru dorința ta: "${desire}". Sistem numerologic Tesla activat pentru manifestare accelerată.`;
             document.getElementById('matrixResult').style.display = 'block';
         }
-        // Generare program reprogramare cu tabel 21 zile si text explicativ
+// Generare program reprogramare cu tabel 21 zile si text explicativ
 function generateReprogramming() {
     const limiting = document.getElementById('limiting-belief').value;
     const newBelief = document.getElementById('new-belief').value;
@@ -984,7 +1026,7 @@ function generateReprogramming() {
     expDiv.innerHTML = expText;
     expDiv.style.display = "block";
 
-    // Construiește ambele structuri: tabel pentru desktop, listă pentru mobil
+    // TABEL pentru desktop
     let table = `<table class="days21-table desktop-only">
         <caption>Program de 21 de zile – Urmărește progresul tău!</caption>
         <thead>
@@ -997,9 +1039,6 @@ function generateReprogramming() {
         </thead>
         <tbody>
     `;
-
-    let lista = `<div class="program-21zile mobile-only">`;
-
     for(let i=1;i<=21;i++) {
         table += `<tr>
             <td>${i}</td>
@@ -1007,17 +1046,21 @@ function generateReprogramming() {
             <td><input type="checkbox" title="Bifat dacă ai făcut vizualizarea"></td>
             <td><input type="checkbox" title="Bifat dacă ai scris în jurnal"></td>
         </tr>`;
-
-        lista += `
-        <div class="ziua">
-          <strong>${i}</strong>
-          <label><input type="checkbox"> Afirmație dimineața</label>
-          <label><input type="checkbox"> Vizualizare 7 min</label>
-          <label><input type="checkbox"> Jurnal recunoștință seara</label>
-        </div>`;
     }
-
     table += `</tbody></table>`;
+
+    // LISTĂ pentru mobil, fiecare task pe linie proprie
+    let lista = `<div class="program-21zile mobile-only">`;
+    for(let i=1;i<=21;i++) {
+        lista += `
+          <div class="ziua">
+            <div class="ziua-nr"><strong>${i}</strong></div>
+            <div class="task"><label><input type="checkbox">Afirmație dimineața</label></div>
+            <div class="task"><label><input type="checkbox">Vizualizare 7 min</label></div>
+            <div class="task"><label><input type="checkbox">Jurnal recunoștință seara</label></div>
+          </div>
+        `;
+    }
     lista += `</div>`;
 
     document.getElementById('program21container').innerHTML = `
